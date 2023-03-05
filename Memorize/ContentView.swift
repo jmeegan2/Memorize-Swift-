@@ -13,28 +13,44 @@ struct ContentView: View {
     //after declaring its a view u have to specify its a view again with a var
     // a function
     var body: some View {
-    
-            
-            return ZStack(content: {
-                    RoundedRectangle(cornerRadius: 20.0)
-                    .stroke(lineWidth: 3)
-                    .padding(.horizontal)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
-                
-                Text("Hello, CS193p").foregroundColor(Color.orange).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            })
-            // another view that behaves like a text
-            //padding exist in all structs that behave like a view
-            //padding is a view modifier
-        
-//
+        HStack {
+            CardView()
+            CardView()
+            CardView()
+            CardView()
         }
+        .padding(.horizontal)
+        .foregroundColor(.red)
+    }
+}
+
+struct CardView :View {
+    var isFaceUp : Bool
+    
+    var body: some View {
+        ZStack {
+            if isFaceUp {
+                //modifier
+                RoundedRectangle(cornerRadius: 20.0)
+                    .fill()
+                    .foregroundColor(.white)
+                RoundedRectangle(cornerRadius: 20.0)
+                    .stroke(lineWidth: 3)
+                Text("✈️")
+                    .font(.largeTitle)
+            } else {
+                
+            }
+        }
+    }
 }
 
 
 
 
+// Z stacks on top, H is horizontal view
 
+// stopped at 14:02 https://www.youtube.com/watch?v=3lahkdHEhW8
 
 
 
@@ -53,5 +69,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
+        ContentView()
+            .preferredColorScheme(.light)
     }
+    
 }
