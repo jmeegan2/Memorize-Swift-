@@ -10,14 +10,14 @@ import SwiftUI  //made by apple and ships with all apple devices
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
 //View has alot of functionality but there are certain responsibilities when you are a view
 struct ContentView: View {
+    var emojis = ["🚂","🚀","🚁","🚜","🚗","🏎","🛻","🦽","🚕","🚓","🚚","🦼","🚙","🚑","🦼","🚌","🚒","🚜","🛴","🚔","🚠","🚟","🚍","🚘"]
     //after declaring its a view u have to specify its a view again with a var
     // a function
     var body: some View {
         HStack {
-            CardView()
-            CardView()
-            CardView()
-            CardView()
+            ForEach(emojis, id: \.self) { emoji in
+                CardView(content: emoji)
+            }
         }
         .padding(.horizontal)
         .foregroundColor(.red)
@@ -25,22 +25,24 @@ struct ContentView: View {
 }
 
 struct CardView :View {
-    var isFaceUp : Bool
+    var content: String
+   @State var isFaceUp : Bool = true
     
     var body: some View {
         ZStack {
+            //use let when defining constants
+            let shape = RoundedRectangle(cornerRadius: 20)
             if isFaceUp {
                 //modifier
-                RoundedRectangle(cornerRadius: 20.0)
-                    .fill()
-                    .foregroundColor(.white)
-                RoundedRectangle(cornerRadius: 20.0)
-                    .stroke(lineWidth: 3)
-                Text("✈️")
-                    .font(.largeTitle)
+                shape.fill().foregroundColor(.white)
+                shape.stroke(lineWidth: 3)
+                Text(content).font(.largeTitle)
             } else {
-                
+                shape.fill()
             }
+        }
+        .onTapGesture {
+            isFaceUp = !isFaceUp
         }
     }
 }
@@ -51,7 +53,7 @@ struct CardView :View {
 // Z stacks on top, H is horizontal view
 
 // stopped at 14:02 https://www.youtube.com/watch?v=3lahkdHEhW8
-
+// stopped at 46:25
 
 
 
