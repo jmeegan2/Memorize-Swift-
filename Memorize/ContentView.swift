@@ -4,23 +4,27 @@
 //
 //  Created by James Meegan on 3/2/23.
 //
+// Onto Lecture 3: MVVM and the Swift type system
+// https://www.youtube.com/watch?v=--qKOhdgJAs
 
 import SwiftUI  //made by apple and ships with all apple devices
 
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
 //View has alot of functionality but there are certain responsibilities when you are a view
 struct ContentView: View {
-   var emojis = ["🚂","🚀","🚁","🚜","🚗","🏎","🛻","🦽","🚕","🚓","🚚","🦼","🚙","🚑","⛵️","🚌","🚒","🛥️","🛴","🚔","🚠","🚟","🚍","🚘"]
+   var emojis = ["🚂","🚁","✈️","🚜","🚗","🏎","🛻","🦽","🚕","🚓","🚚","🦼","🚙","🚑","⛵️","🚌","🚒","🛥️","🛴","🚔","🚠","🚟","🚍","🚘"]
     //after declaring its a view u have to specify its a view again with a var
     // a function
-    @State var emojiCount = 4
+    @State var emojiCount = 20
     
     var body: some View {
         VStack {
             ScrollView{
-                LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
+                
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))], spacing: 10) {
                     ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
-                        CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
+                        CardView(content: emoji)
+                            .aspectRatio(2/3, contentMode: .fit)
                     }
                 }
             }
@@ -71,7 +75,7 @@ struct CardView :View {
             if isFaceUp {
                 //modifier
                 shape.fill().foregroundColor(.white)
-                shape.stroke(lineWidth: 3)
+                shape.strokeBorder(lineWidth: 3)
                 Text(content).font(.largeTitle)
             } else {
                 shape.fill()
@@ -82,26 +86,6 @@ struct CardView :View {
         }
     }
 }
-
-
-
-
-// Z stacks on top, H is horizontal view
-
-// stopped at 14:02 https://www.youtube.com/watch?v=3lahkdHEhW8
-// stopped at 46:25
-//stopped at 1:00:33
-
-
-
-
-
-
-
-
-
-
-
 
 
 struct ContentView_Previews: PreviewProvider {
