@@ -5,6 +5,7 @@
 //  Created by James Meegan on 3/2/23.
 //
 // Onto Lecture 3: MVVM and the Swift type system
+//stopping point: 10min
 // https://www.youtube.com/watch?v=--qKOhdgJAs
 
 import SwiftUI  //made by apple and ships with all apple devices
