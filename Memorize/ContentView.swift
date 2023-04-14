@@ -7,7 +7,7 @@
 // Onto Lecture 3: MVVM and the Swift type system
 // stopping point: 10min, 20:52, 24:11 (lot of notes), 46:45, 1:05:47, 1:25:04
 // Onto lecture 4: Memorize Game Logic
-// stopping point: 9:30
+// stopping point: 9:30, 30:11
 //https://www.youtube.com/watch?v=oWZOFSYS5GE
 import SwiftUI  //made by apple and ships with all apple devices
 
@@ -17,18 +17,18 @@ struct ContentView: View {
     var viewModel: EmojiMemoryGame
     
     var body: some View {
-        VStack {
             ScrollView{
-                
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))], spacing: 10) {
-                    ForEach(viewModel.cards, id: \.self) { card in
-                        CardView(content: emoji)
+                    ForEach(viewModel.cards) { card in
+                        CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
+                            .onTapGesture {
+                                viewModel.choose(card)
+                            }
                     }
                 }
             }
             .foregroundColor(.green)
-        }
         .padding(.horizontal)
     }
 }
@@ -40,12 +40,12 @@ struct CardView :View {
         ZStack {
             //use let when defining constants
             let shape = RoundedRectangle(cornerRadius: 20)
-            if isFaceUp {
+            if card.isFaceUp {
                 //modifier
                 //           example of type inference Color.white -> .white
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 3)
-                Text(content).font(.largeTitle)
+                Text(card.content).font(.largeTitle)
             } else {
                 shape.fill()
             }
