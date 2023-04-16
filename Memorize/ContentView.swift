@@ -7,14 +7,14 @@
 // Onto Lecture 3: MVVM and the Swift type system
 // stopping point: 10min, 20:52, 24:11 (lot of notes), 46:45, 1:05:47, 1:25:04
 // Onto lecture 4: Memorize Game Logic
-// stopping point: 9:30, 30:11
+// stopping point: 9:30, 30:11, 38:20
 //https://www.youtube.com/watch?v=oWZOFSYS5GE
 import SwiftUI  //made by apple and ships with all apple devices
 
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
 //View has alot of functionality but there are certain responsibilities when you are a view
 struct ContentView: View {
-    var viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
             ScrollView{
