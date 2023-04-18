@@ -7,7 +7,7 @@
 // Onto Lecture 3: MVVM and the Swift type system
 // stopping point: 10min, 20:52, 24:11 (lot of notes), 46:45, 1:05:47, 1:25:04
 // Onto lecture 4: Memorize Game Logic
-// stopping point: 9:30, 30:11, 38:20
+// stopping point: 9:30, 30:11, 38:20, 1:02:57
 //https://www.youtube.com/watch?v=oWZOFSYS5GE
 import SwiftUI  //made by apple and ships with all apple devices
 
