@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by James Meegan on 3/2/23.
@@ -13,17 +13,17 @@ import SwiftUI  //made by apple and ships with all apple devices
 
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
 //View has alot of functionality but there are certain responsibilities when you are a view
-struct ContentView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
+struct EmojiMemoryGameView: View {
+    @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
             ScrollView{
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))], spacing: 10) {
-                    ForEach(viewModel.cards) { card in
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+                    ForEach(game.cards) { card in
                         CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                game.choose(card)
                             }
                     }
                 }
@@ -59,9 +59,9 @@ struct CardView :View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.light)
     }
     

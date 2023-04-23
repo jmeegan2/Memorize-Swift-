@@ -9,12 +9,13 @@ import SwiftUI
 
 
 class EmojiMemoryGame: ObservableObject {
+    
     //type variable
-    static let emojis = ["🚂","🚁","✈️","🚜","🚗","🏎","🛻","🦽","🚕","🚓","🚚","🦼","🚙","🚑","⛵️","🚌","🚒","🛥️","🛴","🚔","🚠","🚟","🚍","🚘"]
+   private static let emojis = ["🚂","🚁","✈️","🚜","🚗","🏎","🛻","🦽","🚕","🚓","🚚","🦼","🚙","🚑","⛵️","🚌","🚒","🛥️","🛴","🚔","🚠","🚟","🚍","🚘"]
 
     //type function
-   static func createMemoryGame() -> MemoryGame<String> {
-            MemoryGame<String>(numberOfPairsOfCards: 3) { pairIndex in
+   private static func createMemoryGame() -> MemoryGame<String> {
+            MemoryGame<String>(numberOfPairsOfCards: 9) { pairIndex in
                     emojis[pairIndex]
                 }
         }
