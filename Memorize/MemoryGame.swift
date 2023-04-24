@@ -49,7 +49,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     }
     //Identifiable is a single var that is a single var that is used to identify this struct against other card structs 
     struct Card: Identifiable {
-        var isFaceUp = false
+        var isFaceUp = true
         var isMatched = false
         let content: CardContent
         let id: Int
