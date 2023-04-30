@@ -10,6 +10,7 @@
 // stopping point: 9:30, 30:11, 38:20, 1:02:57
 // Onto lecture 5: Propertiees
 // Onto lecture 6: Protocols Shapes https://www.youtube.com/watch?v=Og9gXZpbKWo
+// stopping points 24:00min, 29:12
 import SwiftUI  //made by apple and ships with all apple devices
 
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
@@ -18,17 +19,20 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
-            ScrollView{
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
-                    ForEach(game.cards) { card in
-                        CardView(card: card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                game.choose(card)
-                            }
-                    }
+//            ScrollView{
+//                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+//                    ForEach(game.cards) { card in
+        AspectVGrid(items: game.cards, aspectRatio: 2/3, content: { card in
+            CardView(card: card)
+                .aspectRatio(2/3, contentMode: .fit)
+                .onTapGesture {
+                    game.choose(card)
                 }
-            }
+        })
+                       
+//                    }
+//                }
+//            }
             .foregroundColor(.green)
         .padding(.horizontal)
     }
