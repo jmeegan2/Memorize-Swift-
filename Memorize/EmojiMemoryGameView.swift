@@ -10,7 +10,7 @@
 // stopping point: 9:30, 30:11, 38:20, 1:02:57
 // Onto lecture 5: Propertiees
 // Onto lecture 6: Protocols Shapes https://www.youtube.com/watch?v=Og9gXZpbKWo
-// stopping points 24:00min, 29:12
+// stopping points 24:00min, 29:12, 38:30 (ur working on aspectVGrid)
 import SwiftUI  //made by apple and ships with all apple devices
 
 //keywords in magenta like struct, ContentView is just the name, ": View" struct will behave like a view
